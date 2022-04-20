@@ -1,0 +1,263 @@
+<html>
+	<head>
+		<!-- Google fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto+Mono&display=swap" rel="stylesheet">
+		<!-- Font awesome logos -->
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+	</head>
+	<style>
+		body, html {
+			background-color: white;
+			color: #141414;
+			font-weight: normal;
+			margin-bottom: 1rem;
+			font-family: 'Inconsolata', monospace;
+		}
+		::-webkit-scrollbar {
+  		display: none;
+		}
+
+		#form {
+			display: inline-block;
+			padding: 0.75rem;
+			font-size: 1.1rem;
+		}
+		#form input {
+			font-size: 1.1rem;
+			padding: 0.5rem;
+			margin-bottom: 0.75rem;
+			margin-left: 0.5rem;
+			font-family: 'Inconsolata', monospace;
+		}
+		.getcode {
+			border: none;
+			background-color: grey;
+			border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
+			color: white;
+		}
+		.getcode:hover {
+			cursor: pointer;
+			background-color: #141414;
+			color: white;
+			text-shadow:
+  			-0.3px -0.3px 0 white,
+  			0.3px -0.3px 0 white,
+  			-0.3px 0.3px 0 white,
+  			0.3px 0.3px 0 white;
+  		-webkit-transition: all 0.5s;
+  		-moz-transition: all 0.5s;
+  		-o-transition: all 0.5s;
+  		transition: all 0.5s;
+		}
+
+		.instructions {
+			color: grey;
+		}
+
+		#output-cont {
+			margin-top: 2rem;
+			width: 28rem;
+			max-height: 68rem;
+			padding: 1rem;
+			border-radius: 1rem 1rem 1rem 1rem;
+			overflow: scroll;
+			text-align: left;
+
+			background-color: #141414;
+			color: white;
+		}
+
+		#clipboard-message {
+			text-align: middle;
+			font-size: 2.5rem;
+			margin-top: 1rem;
+			display: none;
+		}
+
+		#output-title {
+			font-size: 2rem;
+			display: none;
+		}
+
+		#output {
+			/*word-wrap: break-word;*/
+			font-family: 'Inconsolata', monospace;
+		}
+
+		#copy-message {
+			margin-top: 0.5rem;
+			font-weight: bold;
+			color: grey;
+			display: none;
+		}
+
+		#output-download-cont {
+			margin-top: 1rem;
+			font-size: 2rem;
+			display: none;
+			font-weight: normal;
+		}
+
+		#output-download {
+			padding: 1rem;
+			border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
+		  vertical-align: middle;
+			font-size: 1.5rem;
+			border: none;
+			background-color: #58bd4f;
+			color: white;
+		}
+		#output-download:hover {
+			cursor: pointer;
+			background-color: #14b505;
+			text-shadow:
+  			-0.3px -0.3px 0 white,
+  			0.3px -0.3px 0 white,
+  			-0.3px 0.3px 0 white,
+  			0.3px 0.3px 0 white;
+  		-webkit-transition: all 0.25s;
+  		-moz-transition: all 0.25s;
+  		-o-transition: all 0.25s;
+  		transition: all 0.25s;
+		}
+
+	</style>
+<body>
+<center>
+<form id="form" onsubmit="darkhorseform(); return false;">
+  <label for="fname">Full name:</label>
+  <input type="text" id="fname" class="fname">
+	<br>
+	<a class="instructions">e.g. John Doe</a>
+	<br><br><br>
+  <label for="ftitle">Title:</label>
+  <input type="text" id="ftitle" class="ftitle">
+	<br>
+	<a class="instructions">e.g. Sales Representative</a>
+	<br><br><br>
+	<label for="femail">Email:</label>
+  <input type="email" id="femail" class="femail">
+	<br>
+	<a class="instructions">e.g. johndoe@gmail.com (this will be linked to send an email to this address)</a>
+	<br><br><br>
+	<label for="fphone">Phone Number:</label>
+  <input type="tel" id="fphone" class="fphone">
+	<br>
+	<a class="instructions">e.g. +1(123)-456-7890 (this will be linked to call this number on mobile devices)</a>
+	<br><br><br>
+	<label for="fweb1">Website 1:</label>
+  <input type="url" id="fweb1" class="fweb1">
+	<br>
+	<a class="instructions">e.g. https://www.example.com/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="fweb2">Website 2:</label>
+  <input type="url" id="fweb2" class="fweb2">
+	<br>
+	<a class="instructions">e.g. https://www.example.com/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="flinkedin">Linked In:</label>
+  <input type="url" id="flinkedin" class="flinkedin">
+	<br>
+	<a class="instructions">e.g. https://www.linkedin.com/in/username/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="ffacebook">Facebook:</label>
+  <input type="url" id="ffacebook" class="ffacebook">
+	<br>
+	<a class="instructions">e.g. https://www.facebook.com/profile/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="finstagram">Instagram:</label>
+  <input type="url" id="finstagram" class="finstagram">
+	<br>
+	<a class="instructions">e.g. https://www.instagram.com/username/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="ftwitter">Twitter:</label>
+  <input type="url" id="ftwitter" class="ftwitter">
+	<br>
+	<a class="instructions">e.g. https://twitter.com/username/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="fyoutube">YouTube:</label>
+  <input type="url" id="fyoutube" class="fyoutube">
+	<br>
+	<a class="instructions">e.g. https://www.youtube.com/username/ (this will be linked to go to this website)</a>
+	<br><br><br>
+  <input style="padding: 1rem;	font-size: 1.25rem;" class="getcode" type="submit" value="Get Code!">
+</form> 
+
+<a id="output-title">Click below to download your custom code!</a>
+<div id="output-cont"><a id="output"></a></div>
+<div id="copy-message"><a>Or copy your custom code above</a></div>
+<div id="output-download-cont">
+	<a>Download your .html file </a><button id="output-download">here <i class="fas fa-download"></i></button>
+</div>
+</center>
+
+<script>
+var clipboardtitle = document.getElementById("output-title");
+var outputdownloadcont = document.getElementById("output-download-cont");
+var copymessage = document.getElementById("copy-message");
+
+var outputcont = document.getElementById("output-cont");
+outputcont.style.display = "none";
+
+function darkhorseform() {
+	copymessage.style.display = "block";
+	clipboardtitle.style.display = "block"
+	outputdownloadcont.style.display = "block";
+
+	var output = document.getElementById("output");
+	outputcont.style.display = "";
+
+	var form = document.getElementById("form");
+	form.style.display = "none";
+  //get form inputs
+	var name = document.getElementById("fname").value;
+	var title = document.getElementById("ftitle").value;
+	var email = document.getElementById("femail").value;
+	var phone = document.getElementById("fphone").value;
+	var web1 = document.getElementById("fweb1").value;
+	var web2 = document.getElementById("fweb2").value;
+	var linkedin = document.getElementById("flinkedin").value;
+	var facebook = document.getElementById("ffacebook").value;
+	var instagram = document.getElementById("finstagram").value;
+	var twitter = document.getElementById("ftwitter").value;
+	var youtube = document.getElementById("fyoutube").value;
+  //if form input none define display vars as none
+	if (linkedin) {var linkedindisplay = ""} else {var linkedindisplay = "none"};
+	if (facebook) {var facebookdisplay = ""} else {var facebookdisplay = "none"};
+	if (instagram) {var instagramdisplay = ""} else {var instagramdisplay = "none"};
+	if (twitter) {var twitterdisplay = ""} else {var twitterdisplay = "none"};
+	if (youtube) {var youtubedisplay = ""} else {var youtubedisplay = "none"};
+	submitOK = "true";
+
+	output.innerHTML = "&#60;!DOCTYPE html&#62;<br/>&#60;html lang=&#34;en&#34; xmlns:o=&#34;urn:schemas-microsoft-com:office:office&#34; xmlns:v=&#34;urn:schemas-microsoft-com:vml&#34;&#62;<br/>&#60;head&#62;<br/>&#60;title&#62;&#60;/title&#62;<br/>&#60;meta charset=&#34;utf-8&#34;/&#62;<br/>&#60;meta content=&#34;width=device-width, initial-scale=1.0&#34; name=&#34;viewport&#34;/&#62;<br/>&#60;style&#62;	<br/>{box-sizing: border-box;}<br/>body {margin: 0; padding: 0;}<br/>a[x-apple-data-detectors] {color: inherit !important; text-decoration: inherit !important;}<br/>#MessageViewBody a {color: inherit; text-decoration: none;}<br/>p {line-height: inherit}<br/>@media (max-width:0px) {<br/>.icons-inner {text-align: center;}<br/>.icons-inner td {margin: 0 auto;}<br/>.row-content {width: 100% !important;}<br/>.stack .column {width: 100%; display: block;}<br/>}<br/>&#60;/style&#62;<br/>&#60;/head&#62;<br/>&#60;body style=&#34;background-color: #ffffff; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;&#34;&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;nl-container&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tbody&#62;<br/>&#60;tr&#62;<br/>&#60;td&#62;<br/>&#60;table align=&#34;center&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;row row-1&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tbody&#62;<br/>&#60;tr&#62;<br/>&#60;td&#62;<br/>&#60;table align=&#34;left&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;row-content stack&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #141414; color: #000000; width: 300px;&#34; width=&#34;300&#34;&#62;<br/>&#60;tbody&#62;<br/>&#60;tr&#62;<br/>&#60;td class=&#34;column&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;&#34; width=&#34;100%&#34;&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;heading_block&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td style=&#34;width:100%;text-align:center;padding-top:10px;padding-left:20px;&#34;&#62;<br/>&#60;h1 style=&#34;margin: 0; color: #fff; font-size: 30px; font-family: 'Source Sans Pro', Tahoma, Verdana, Segoe, sans-serif; line-height: 120%; text-align: center; direction: ltr; font-weight: normal; letter-spacing: normal; margin-top: 0; margin-bottom: 0;&#34;&#62;&#60;strong&#62;"+name+"&#60;/strong&#62;&#60;/h1&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;text_block&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td style=&#34;padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:20px;&#34;&#62;<br/>&#60;div style=&#34;font-family: sans-serif&#34;&#62;<br/>&#60;div style=&#34;font-size: 14px; mso-line-height-alt: 16.8px; color: #808080; line-height: 1.2; font-family: 'Source Sans Pro', Tahoma, Verdana, Segoe, sans-serif;&#34;&#62;<br/>&#60;p style=&#34;margin: 0; font-size: 14px; text-align: center;&#34;&#62;&#60;span style=&#34;font-size:20px;&#34;&#62;"+title+"&#60;/span&#62;&#60;/p&#62;<br/>&#60;/div&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;divider_block&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td style=&#34;padding-top:15px;padding-right:15px;padding-bottom:16px;padding-left:20px;&#34;&#62;<br/>&#60;div align=&#34;center&#34;&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt;&#34; width=&#34;65%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td class=&#34;divider_inner&#34; style=&#34; font-size: 1px; line-height: 1px; border-top: 2px solid #FFF;&#34;&#62;&#60;span&#62; &#60;/span&#62;&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;text_block&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td style=&#34;padding-top:4px;padding-left:20px;&#34;&#62;<br/>&#60;div style=&#34;font-family: sans-serif&#34;&#62;<br/>&#60;div style=&#34;font-size: 14px; mso-line-height-alt: 28px; color: #555555; line-height: 2; font-family: 'Source Sans Pro', Tahoma, Verdana, Segoe, sans-serif;&#34;&#62;<br/>&#60;p style=&#34;margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 32px;&#34;&#62;&#60;span style=&#34;font-size:16px;&#34;&#62;&#60;a href=&#34;mailto:"+email+"&#34; rel=&#34;noopener&#34; style=&#34;text-decoration: underline; color: #ffffff;&#34; target=&#34;_blank&#34;&#62;"+email+"&#60;/a&#62;&#60;/span&#62;&#60;/p&#62;<br/>&#60;/div&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;text_block&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td style=&#34;padding-top:4px;padding-left:20px;&#34;&#62;<br/>&#60;div style=&#34;font-family: sans-serif&#34;&#62;<br/>&#60;div style=&#34;font-size: 14px; mso-line-height-alt: 28px; color: #555555; line-height: 2; font-family: 'Source Sans Pro', Tahoma, Verdana, Segoe, sans-serif;&#34;&#62;<br/>&#60;p style=&#34;margin: 0; font-size: 14px; text-align: center;&#34;&#62;&#60;a href=&#34;tel:"+phone+"&#34; rel=&#34;noopener&#34; style=&#34;text-decoration: underline; color: #ffffff;&#34; target=&#34;_blank&#34;&#62;&#60;span style=&#34;font-size:16px;&#34;&#62;"+phone+"&#60;/span&#62;&#60;/a&#62;&#60;/p&#62;<br/>&#60;/div&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;text_block&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td style=&#34;padding-top:4px;padding-left:20px;&#34;&#62;<br/>&#60;div style=&#34;font-family: sans-serif&#34;&#62;<br/>&#60;div style=&#34;font-size: 14px; mso-line-height-alt: 28px; color: #555555; line-height: 2; font-family: 'Source Sans Pro', Tahoma, Verdana, Segoe, sans-serif;&#34;&#62;<br/>&#60;p style=&#34;margin: 0; font-size: 14px; text-align: center;&#34;&#62;&#60;a href=&#34;"+web1+"&#34; rel=&#34;noopener&#34; style=&#34;text-decoration: underline; color: #ffffff;&#34; target=&#34;_blank&#34;&#62;&#60;span style=&#34;font-size:16px;&#34;&#62;"+web1+"&#60;/span&#62;&#60;/a&#62;&#60;/p&#62;<br/>&#60;/div&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;text_block&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td style=&#34;padding-top:4px;padding-left:20px;&#34;&#62;<br/>&#60;div style=&#34;font-family: sans-serif&#34;&#62;<br/>&#60;div style=&#34;font-size: 14px; mso-line-height-alt: 28px; color: #555555; line-height: 2; font-family: 'Source Sans Pro', Tahoma, Verdana, Segoe, sans-serif;&#34;&#62;<br/>&#60;p style=&#34;margin: 0; font-size: 14px; text-align: center;&#34;&#62;&#60;a href=&#34;"+web2+"&#34; rel=&#34;noopener&#34; style=&#34;text-decoration: underline; color: #ffffff;&#34; target=&#34;_blank&#34;&#62;&#60;span style=&#34;font-size:16px;&#34;&#62;"+web2+"&#60;/span&#62;&#60;/a&#62;&#60;/p&#62;<br/>&#60;/div&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;divider_block&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td style=&#34;padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:20px;&#34;&#62;<br/>&#60;div align=&#34;center&#34;&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt;&#34; width=&#34;65%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td class=&#34;divider_inner&#34; style=&#34;display: block; font-size: 1px; line-height: 1px; border-top: 1px solid #BBBBBB;&#34;&#62;&#60;span&#62; &#60;/span&#62;&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;social_block&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt;&#34; width=&#34;100%&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td style=&#34;text-align:center;padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:20px;&#34;&#62;<br/>&#60;table align=&#34;center&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;social-table&#34; role=&#34;presentation&#34; style=&#34;mso-table-lspace: 0pt; mso-table-rspace: 0pt;&#34; width=&#34;230px&#34;&#62;<br/>&#60;tr&#62;<br/>&#60;td style=&#34; display: "+linkedindisplay+"; padding:0 7px 0 7px;&#34;&#62;&#60;a href=&#34;"+linkedin+"&#34; target=&#34;_blank&#34;&#62;&#60;img alt=&#34;LinkedIn&#34; height=&#34;32&#34; src=&#34;https://firebasestorage.googleapis.com/v0/b/email-signatures-f9d4c.appspot.com/o/Icons%20style%201%2Flinkedin2x.png?alt=media&token=6969d437-e4b8-4b92-bfd7-dfe1298f12da&#34; style=&#34;height: auto; border: 0;&#34; title=&#34;LinkedIn&#34; width=&#34;32&#34;/&#62;&#60;/a&#62;&#60;/td&#62;<br/>&#60;td style=&#34;display: "+facebookdisplay+"; padding:0 7px 0 7px;&#34;&#62;&#60;a href=&#34;"+facebook+"&#34; target=&#34;_blank&#34;&#62;&#60;img alt=&#34;Facebook&#34; height=&#34;32&#34; src=&#34;https://firebasestorage.googleapis.com/v0/b/email-signatures-f9d4c.appspot.com/o/Icons%20style%201%2Ffacebook2x.png?alt=media&token=42f93d34-8840-4f4a-ab9b-4d484f9c4cf3&#34; style=&#34;height: auto; border: 0;&#34; title=&#34;Facebook&#34; width=&#34;32&#34;/&#62;&#60;/a&#62;&#60;/td&#62;<br/>&#60;td style=&#34;display: "+instagramdisplay+";padding:0 7px 0 7px;&#34;&#62;&#60;a href=&#34;"+instagram+"&#34; target=&#34;_blank&#34;&#62;&#60;img alt=&#34;Instagram&#34; height=&#34;32&#34; src=&#34;https://firebasestorage.googleapis.com/v0/b/email-signatures-f9d4c.appspot.com/o/Icons%20style%201%2Finstagram2x.png?alt=media&token=fc779715-a1a5-402c-a07d-fc67be44d86c&#34; style=&#34;height: auto; border: 0;&#34; title=&#34;Instagram&#34; width=&#34;32&#34;/&#62;&#60;/a&#62;&#60;/td&#62;<br/>&#60;td style=&#34;display: "+twitterdisplay+"; padding:0 7px 0 7px;&#34;&#62;&#60;a href=&#34;"+twitter+"&#34; target=&#34;_blank&#34;&#62;&#60;img alt=&#34;Twitter&#34; height=&#34;32&#34; src=&#34;https://firebasestorage.googleapis.com/v0/b/email-signatures-f9d4c.appspot.com/o/Icons%20style%201%2Ftwitter2x.png?alt=media&token=953c10cd-b11b-4b35-9c8f-2f79b8d7ae7c&#34; style=&#34;height: auto; border: 0;&#34; title=&#34;Twitter&#34; width=&#34;32&#34;/&#62;&#60;/a&#62;&#60;/td&#62;<br/>&#60;td style=&#34;display: "+youtubedisplay+"; padding:0 7px 0 7px;&#34;&#62;&#60;a href=&#34;"+youtube+"&#34; target=&#34;_blank&#34;&#62;&#60;img alt=&#34;YouTube&#34; height=&#34;32&#34; src=&#34;https://firebasestorage.googleapis.com/v0/b/email-signatures-f9d4c.appspot.com/o/Icons%20style%201%2Fyoutube2x.png?alt=media&token=afb428bf-0efe-49a9-9bbb-d6e7da99b02d&#34; style=&#34; height: auto; border: 0;&#34; title=&#34;YouTube&#34; width=&#34;32&#34;/&#62;&#60;/a&#62;&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/tbody&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/tbody&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/tbody&#62;<br/>&#60;/table&#62;<br/>&#60;/body&#62;<br/>&#60;/html&#62;";
+}
+
+function download(filename, outputdownload) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(outputdownload));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+// Start file download.
+document.getElementById("output-download").addEventListener("click", function(){
+    // Generate download of hello.txt file with some content
+		window.open("https://www.codesignatures.dev/instructions");
+    var outputdownload = document.getElementById("output").innerText;
+    var filename = "darkhorsesignature.html";
+    
+    download(filename, outputdownload);
+}, false);
+
+
+</script>
+</body>
+</html>
