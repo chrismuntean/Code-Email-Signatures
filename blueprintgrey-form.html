@@ -1,0 +1,275 @@
+<html>
+	<head>
+		<!-- Google fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto+Mono&display=swap" rel="stylesheet">
+		<!-- Font awesome logos -->
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+	</head>
+	<style>
+		body, html {
+			background-color: white;
+			color: #141414;
+			font-weight: normal;
+			margin-bottom: 1rem;
+			font-family: 'Inconsolata', monospace;
+		}
+		::-webkit-scrollbar {
+  		display: none;
+		}
+
+		#form {
+			display: inline-block;
+			padding: 0.75rem;
+			font-size: 1.1rem;
+		}
+		#form input {
+			font-size: 1.1rem;
+			padding: 0.5rem;
+			margin-bottom: 0.75rem;
+			margin-left: 0.5rem;
+			font-family: 'Inconsolata', monospace;
+		}
+		.getcode {
+			border: none;
+			background-color: grey;
+			border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
+			color: white;
+		}
+		.getcode:hover {
+			cursor: pointer;
+			background-color: #141414;
+			color: white;
+			text-shadow:
+  			-0.3px -0.3px 0 white,
+  			0.3px -0.3px 0 white,
+  			-0.3px 0.3px 0 white,
+  			0.3px 0.3px 0 white;
+  		-webkit-transition: all 0.5s;
+  		-moz-transition: all 0.5s;
+  		-o-transition: all 0.5s;
+  		transition: all 0.5s;
+		}
+
+		.instructions {
+			color: grey;
+		}
+
+		#output-cont {
+			margin-top: 2rem;
+			width: 28rem;
+			max-height: 68rem;
+			padding: 1rem;
+			border-radius: 1rem 1rem 1rem 1rem;
+			overflow: scroll;
+			text-align: left;
+
+			background-color: #141414;
+			color: white;
+		}
+
+		#clipboard-message {
+			text-align: middle;
+			font-size: 2.5rem;
+			margin-top: 1rem;
+			display: none;
+		}
+
+		#output-title {
+			font-size: 2rem;
+			display: none;
+		}
+
+		#output {
+			/*word-wrap: break-word;*/
+			font-family: 'Inconsolata', monospace;
+		}
+
+		#copy-message {
+			margin-top: 0.5rem;
+			font-weight: bold;
+			color: grey;
+			display: none;
+		}
+
+		#output-download-cont {
+			margin-top: 1rem;
+			font-size: 2rem;
+			display: none;
+			font-weight: normal;
+		}
+
+		#output-download {
+			padding: 1rem;
+			border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
+		  vertical-align: middle;
+			font-size: 1.5rem;
+			border: none;
+			background-color: #58bd4f;
+			color: white;
+		}
+		#output-download:hover {
+			cursor: pointer;
+			background-color: #14b505;
+			text-shadow:
+  			-0.3px -0.3px 0 white,
+  			0.3px -0.3px 0 white,
+  			-0.3px 0.3px 0 white,
+  			0.3px 0.3px 0 white;
+  		-webkit-transition: all 0.25s;
+  		-moz-transition: all 0.25s;
+  		-o-transition: all 0.25s;
+  		transition: all 0.25s;
+		}
+
+	</style>
+<body>
+<center>
+<form id="form" onsubmit="darkhorseform(); return false;">
+  <label for="fname">Full name:</label>
+  <input type="text" id="fname" class="fname">
+	<br>
+	<a class="instructions">e.g. John Doe</a>
+	<br><br><br>
+  <label for="ftitle">Title:</label>
+  <input type="text" id="ftitle" class="ftitle">
+	<br>
+	<a class="instructions">e.g. Sales Representative</a>
+	<br><br><br>
+	<label for="femail">Email:</label>
+  <input type="email" id="femail" class="femail">
+	<br>
+	<a class="instructions">e.g. johndoe@gmail.com (this will be linked to send an email to this address)</a>
+	<br><br><br>
+	<label for="fphone">Phone Number:</label>
+  <input type="tel" id="fphone" class="fphone">
+	<br>
+	<a class="instructions">e.g. +1(123)-456-7890 (this will be linked to call this number on mobile devices)</a>
+	<br><br><br>
+	<label for="fweb1">Website 1:</label>
+  <input type="url" id="fweb1" class="fweb1">
+	<br>
+	<a class="instructions">e.g. https://www.example.com/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="fweb2">Website 2:</label>
+  <input type="url" id="fweb2" class="fweb2">
+	<br>
+	<a class="instructions">e.g. https://www.example.com/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="flinkedin">Linked In:</label>
+  <input type="url" id="flinkedin" class="flinkedin">
+	<br>
+	<a class="instructions">e.g. https://www.linkedin.com/in/username/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="ffacebook">Facebook:</label>
+  <input type="url" id="ffacebook" class="ffacebook">
+	<br>
+	<a class="instructions">e.g. https://www.facebook.com/profile/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="finstagram">Instagram:</label>
+  <input type="url" id="finstagram" class="finstagram">
+	<br>
+	<a class="instructions">e.g. https://www.instagram.com/username/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="ftwitter">Twitter:</label>
+  <input type="url" id="ftwitter" class="ftwitter">
+	<br>
+	<a class="instructions">e.g. https://twitter.com/username/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="fyoutube">YouTube:</label>
+  <input type="url" id="fyoutube" class="fyoutube">
+	<br>
+	<a class="instructions">e.g. https://www.youtube.com/username/ (this will be linked to go to this website)</a>
+	<br><br><br>
+	<label for="faddress">Address:</label>
+  <input type="text" id="faddress" class="faddress">
+	<br>
+	<a class="instructions">e.g. 123 Main Street, New York, NY 10030</a>
+	<br><br><br>
+  <input style="padding: 1rem;	font-size: 1.25rem;" class="getcode" type="submit" value="Get Code!">
+</form> 
+
+<a id="output-title">Click below to download your custom code!</a>
+<div id="output-cont"><a id="output"></a></div>
+<div id="copy-message"><a>Or copy your custom code above</a></div>
+<div id="output-download-cont">
+	<a>Download your .html file </a><button id="output-download">here <i class="fas fa-download"></i></button>
+</div>
+</center>
+
+<script>
+var clipboardtitle = document.getElementById("output-title");
+var outputdownloadcont = document.getElementById("output-download-cont");
+var copymessage = document.getElementById("copy-message");
+
+var outputcont = document.getElementById("output-cont");
+outputcont.style.display = "none";
+
+function darkhorseform() {
+	copymessage.style.display = "block";
+	clipboardtitle.style.display = "block"
+	outputdownloadcont.style.display = "block";
+
+	var output = document.getElementById("output");
+	outputcont.style.display = "";
+
+	var form = document.getElementById("form");
+	form.style.display = "none";
+  //get form inputs
+	var name = document.getElementById("fname").value;
+	var title = document.getElementById("ftitle").value;
+	var email = document.getElementById("femail").value;
+	var phone = document.getElementById("fphone").value;
+	var web1 = document.getElementById("fweb1").value;
+	var web2 = document.getElementById("fweb2").value;
+	var linkedin = document.getElementById("flinkedin").value;
+	var facebook = document.getElementById("ffacebook").value;
+	var instagram = document.getElementById("finstagram").value;
+	var twitter = document.getElementById("ftwitter").value;
+	var youtube = document.getElementById("fyoutube").value;
+	var address = document.getElementById("faddress").value;
+  //if form input none define display vars as none
+	if (phone) {var phonedisplay = ""} else {var phonedisplay = "none"};
+	if (web1) {var web1display = ""} else {var web1display = "none"};
+	if (web2) {var web2display = ""} else {var web2display = "none"};
+	//socials
+	if (linkedin) {var linkedindisplay = ""} else {var linkedindisplay = "none"};
+	if (facebook) {var facebookdisplay = ""} else {var facebookdisplay = "none"};
+	if (instagram) {var instagramdisplay = ""} else {var instagramdisplay = "none"};
+	if (twitter) {var twitterdisplay = ""} else {var twitterdisplay = "none"};
+	if (youtube) {var youtubedisplay = ""} else {var youtubedisplay = "none"};
+	//addy
+	if (address) {var addressdisplay = ""} else {var addressdisplay = "none"};
+	submitOK = "true";
+
+	output.innerHTML = "&#60;!DOCTYPE html&#62;<br/>&#60;html lang='en' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:v='urn:schemas-microsoft-com:vml'&#62;<br/>&#60;head&#62;<br/>&#60;title&#62;&#60;/title&#62;<br/>&#60;meta charset='utf-8'/&#62;<br/>&#60;meta content='width=device-width, initial-scale=1.0' name='viewport'/&#62;<br/>&#60;style&#62;<br/>{box-sizing: border-box;}<br/>body {margin: 0; padding: 0;}<br/>a[x-apple-data-detectors] {color: inherit !important; text-decoration: inherit !important;}<br/>#MessageViewBody a {color: inherit; text-decoration: none;}<br/>p {line-height: inherit}<br/>@media (max-width:300px) {.icons-inner {text-align: center;}.icons-inner td {margin: 0 auto;}.row-content {width: 100% !important;}]<br/>.stack .column {width: 100%; display: block;}}<br/>&#60;/style&#62;<br/>&#60;/head&#62;<br/>&#60;body style='background-color: #FFFFFF; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;'&#62;<br/>&#60;table border='0' cellpadding='0' cellspacing='0' class='nl-container' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF;' width='100%'&#62;<br/>&#60;tbody&#62;<br/>&#60;tr&#62;<br/>&#60;td&#62;<br/>&#60;table align='center' border='0' cellpadding='0' cellspacing='0' class='row row-1' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt;' width='100%'&#62;<br/>&#60;tbody&#62;<br/>&#60;tr&#62;<br/>&#60;td&#62;<br/>&#60;table align='left' border='0' cellpadding='0' cellspacing='0' class='row-content stack' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 350px;' width='430'&#62;<br/>&#60;tbody&#62;<br/>&#60;tr&#62;<br/>&#60;td class='column' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;' width='100%'&#62;<br/>&#60;table border='0' cellpadding='10' cellspacing='0' class='text_block' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;' width='100%'&#62;<br/>&#60;tr&#62;<br/>&#60;td&#62;<br/>&#60;div style='font-family: sans-serif'&#62;<br/>&#60;div style='font-size: 14px; mso-line-height-alt: 16.8px; color: #555555; line-height: 1.2; font-family: Arial, Helvetica Neue, Helvetica, sans-serif;'&#62;<br/>&#60;p style='margin: 0; font-size: 14px;'&#62;&#60;strong&#62;&#60;span style='font-size:16px;'&#62;"+name+" | &#60;a href='mailto:"+email+"' rel='noopener' style='display: ; text-decoration: underline; color: #0068A5;' target='_blank'&#62;"+email+"&#60;/a&#62;&#60;/span&#62;&#60;/strong&#62;&#60;/p&#62;<br/>&#60;p style='margin: 0; font-size: 14px; display: ;'&#62;"+title+"&#60;/p&#62;<br/>&#60;/div&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border='0' cellpadding='0' cellspacing='0' class='divider_block' role='presentation' style=' padding-left: 10px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;' width='100%'&#62;<br/>&#60;tr&#62;<br/>&#60;td&#62;<br/>&#60;div align='center'&#62;<br/>&#60;table border='0' cellpadding='0' cellspacing='0' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt;' width='100%'&#62;<br/>&#60;tr&#62;<br/>&#60;td class='divider_inner' style='font-size: 1px; line-height: 1px; border-top: 1px solid #BBBBBB;'&#62;&#60;span&#62; &#60;/span&#62;&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border='0' cellpadding='10' cellspacing='0' class='text_block' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;' width='100%'&#62;<br/>&#60;tr&#62;<br/>&#60;td&#62;<br/>&#60;div style='font-family: sans-serif'&#62;<br/>&#60;div style='font-size: 14px; mso-line-height-alt: 25.2px; color: #555555; line-height: 1.8; font-family: Arial, Helvetica Neue, Helvetica, sans-serif;'&#62;<br/>&#60;p style='display: "+phonedisplay+"; margin: 0; font-size: 14px;'&#62;📞 &#60;a href='tel:"+phone+"' rel='noopener' style='text-decoration: underline; color: #0068A5;' target='_blank'&#62;"+phone+"&#60;/a&#62;&#60;/p&#62;<br/>&#60;p style='display: "+web1display+"; margin: 0; font-size: 14px;'&#62;🔗 &#60;a href='"+web1+"' rel='noopener' style='text-decoration: underline; color: #0068A5;' target='_blank'&#62;"+web1+"&#60;/a&#62;&#60;/p&#62;<br/>&#60;p style='display: "+web2display+"; margin: 0;'&#62;🔗 &#60;a href='"+web2+"' rel='noopener' style='color: #0068A5;' target='_blank'&#62;"+web2+"&#60;/a&#62;&#60;/p&#62;<br/>&#60;p style='display: ; margin: 0;'&#62;"+address+"&#60;/p&#62;<br/>&#60;/div&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border='0' cellpadding='0' cellspacing='0' class='divider_block' role='presentation' style='padding-left: 10px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;' width='100%'&#62;<br/>&#60;tr&#62;<br/>&#60;td&#62;<br/>&#60;div align='center'&#62;<br/>&#60;table border='0' cellpadding='0' cellspacing='0' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt;' width='100%'&#62;<br/>&#60;tr&#62;<br/>&#60;td class='divider_inner' style='font-size: 1px; line-height: 1px; border-top: 1px solid #BBBBBB;'&#62;&#60;span&#62; &#60;/span&#62;&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;/div&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;table border='0' cellpadding='10' cellspacing='0' class='social_block' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt;' width='100%'&#62;<br/>&#60;tr&#62;<br/>&#60;td&#62;<br/>&#60;table align='center' border='0' cellpadding='0' cellspacing='0' class='social-table' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt;' width='210px'&#62;<br/>&#60;tr&#62;<br/>&#60;td style='display: "+linkedindisplay+";padding:0 10px 0 0;'&#62;&#60;a href='"+linkedin+"' target='_blank'&#62;&#60;img alt='LinkedIn' height='32' src='https://firebasestorage.googleapis.com/v0/b/email-signatures-f9d4c.appspot.com/o/Icons%20style%202%2Flinkedin2x.png?alt=media&token=0407088e-ba1f-4353-b7a9-ab703ad43065' style='display: block; height: auto; border: 0;' title='LinkedIn' width='32'/&#62;&#60;/a&#62;&#60;/td&#62;<br/>&#60;td style='display: "+facebookdisplay+";padding:0 10px 0 0;'&#62;&#60;a href='"+facebook+"' target='_blank'&#62;&#60;img alt='Facebook' height='32' src='https://firebasestorage.googleapis.com/v0/b/email-signatures-f9d4c.appspot.com/o/Icons%20style%202%2Ffacebook2x.png?alt=media&token=0e754dd5-448d-468a-bf24-f7ac58f64682' style='display: block; height: auto; border: 0;' title='Facebook' width='32'/&#62;&#60;/a&#62;&#60;/td&#62;<br/>&#60;td style='display: "+instagramdisplay+";padding:0 10px 0 0;'&#62;&#60;a href='"+instagram+"' target='_blank'&#62;&#60;img alt='Instagram' height='32' src='https://firebasestorage.googleapis.com/v0/b/email-signatures-f9d4c.appspot.com/o/Icons%20style%202%2Finstagram2x.png?alt=media&token=e24b8b49-802b-4b49-b018-b930651b9156' style='display: block; height: auto; border: 0;' title='Instagram' width='32'/&#62;&#60;/a&#62;&#60;/td&#62;<br/>&#60;td style='display: "+twitterdisplay+";padding:0 10px 0 0;'&#62;&#60;a href='"+twitter+"' target='_blank'&#62;&#60;img alt='Twitter' height='32' src='https://firebasestorage.googleapis.com/v0/b/email-signatures-f9d4c.appspot.com/o/Icons%20style%202%2Ftwitter2x.png?alt=media&token=d35147e6-31c6-4759-a24a-f29cb49f0067' style='display: block; height: auto; border: 0;' title='Twitter' width='32'/&#62;&#60;/a&#62;&#60;/td&#62;<br/>&#60;td style='display: "+youtubedisplay+";padding:0 10px 0 0;'&#62;&#60;a href='"+youtube+"' target='_blank'&#62;&#60;img alt='YouTube' height='32' src='https://firebasestorage.googleapis.com/v0/b/email-signatures-f9d4c.appspot.com/o/Icons%20style%202%2Fyoutube2x.png?alt=media&token=1847a3c1-c218-4462-8a60-7faeeaa60e0f' style='display: block; height: auto; border: 0;' title='YouTube' width='32'/&#62;&#60;/a&#62;&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/tbody&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/tbody&#62;<br/>&#60;/table&#62;<br/>&#60;table align='center' border='0' cellpadding='0' cellspacing='0' class='row row-2' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt;' width='100%'&#62;<br/>&#60;tbody&#62;<br/>&#60;tr&#62;<br/>&#60;td&#62;<br/>&#60;table align='left' border='0' cellpadding='0' cellspacing='0' class='row-content stack' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 480px;' width='480'&#62;<br/>&#60;tbody&#62;<br/>&#60;tr&#62;<br/>&#60;td class='column' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;' width='100%'&#62;<br/>&#60;table border='0' cellpadding='0' cellspacing='0' class='icons_block' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt;' width='100%'&#62;<br/>&#60;tr&#62;<br/>&#60;td style='color:#9d9d9d;font-family:inherit;font-size:15px;padding-bottom:5px;padding-top:5px;text-align:center;'&#62;<br/>&#60;table cellpadding='0' cellspacing='0' role='presentation' style='mso-table-lspace: 0pt; mso-table-rspace: 0pt;' width='100%'&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/tbody&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/tbody&#62;<br/>&#60;/table&#62;<br/>&#60;/td&#62;<br/>&#60;/tr&#62;<br/>&#60;/tbody&#62;<br/>&#60;/table&#62;<br/>&#60;/body&#62;<br/>&#60;/html&#62;";
+}
+
+function download(filename, outputdownload) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(outputdownload));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+// Start file download.
+document.getElementById("output-download").addEventListener("click", function(){
+    // Generate download of hello.txt file with some content
+		window.open("https://www.codesignatures.dev/instructions");
+    var outputdownload = document.getElementById("output").innerText;
+    var filename = "blueprintgreysignature.html";
+    
+    download(filename, outputdownload);
+}, false);
+
+
+</script>
+</body>
+</html>
