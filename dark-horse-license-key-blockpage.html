@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<!-- Google fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto+Mono&display=swap" rel="stylesheet">
+	</head>
+	<style>
+		body, html {
+			background-color: #141414;
+			color: white;
+  		font-family: 'Roboto Mono', monospace;
+			font-size: 1.5rem;
+			text-align: center;
+		}
+
+		form {
+			margin-top: 4rem;
+		}
+
+		.submit {
+			padding: 0.75rem;
+			margin-top: 2rem;
+			border: none;
+			font-size: 1rem;
+			font-weight: bold;
+			border-radius: 1.25rem 1.25rem 1.25rem 1.25rem;
+		}		
+		.submit:hover {
+			cursor: pointer;
+			text-shadow:
+  			-0.2px -0.2px 0 black,
+  			0.2px -0.2px 0 black,
+  			-0.2px 0.2px 0 black,
+  			0.2px 0.2px 0 black;
+  		-webkit-transition: all 0.5s;
+  		-moz-transition: all 0.5s;
+  		-o-transition: all 0.5s;
+  		transition: all 0.5s;
+		}
+
+		.keybox {
+			padding: 0.5rem;
+			vertical-align: middle;
+			text-align: center;
+			font-size: 1rem;
+			font-family: 'Inconsolata', monospace;
+		}
+
+		#message {
+			font-size: 1rem;
+			margin-top: 1rem;
+		}
+
+	</style>
+  <body>
+		<form action="javascript:void(0);" onsubmit="return darkhorseblockpage()">
+			License key: <input class="keybox" type="text" id="fkey" size="33" name="fkey">
+			<br>
+  		<input class="submit" type="submit" value="Submit"> 
+		</form>
+		<br>
+		<a id="message">Insert your Dark Horse license key</a>
+    <script>
+
+function darkhorseblockpage() {
+	var message = document.getElementById("message");
+
+	var fkey = document.getElementById("fkey").value;
+  submitOK = "true";
+	console.log("fkey: "+fkey);
+
+	var url = "https://api.gumroad.com/v2/licenses/verify";
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
+
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+	xhr.onreadystatechange = function () {
+   	if (xhr.readyState === 4) {
+				response = xhr.responseText;
+				jsresponse = JSON.parse(response);
+				console.log(jsresponse.success);
+				console.log(jsresponse.uses);
+				if (jsresponse.success == true && jsresponse.uses < 4) {
+    			message.innerHTML = "Success! Redirecting...";
+					message.style.color = "green";
+					window.open("https://www.codesignatures.dev/home/dark-horse-blockpage/secreturl-b408iwkn1rtiv2p7r7se");
+					window.close();
+				} else if (jsresponse.success == true) {
+					message.innerHTML = "Max use limit reached (3)";
+					message.style.color = "yellow";
+				} else {
+    			message.innerHTML = jsresponse.message;
+					message.style.color = "red";
+				}
+   	}};
+
+	var apilink = "product_permalink=dark-horse&license_key=" + fkey;
+	xhr.send(apilink);
+
+  return false;
+}
+
+		</script>
+  </body>
+</html>
